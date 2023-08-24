@@ -23,19 +23,20 @@ NOTA: Para saber nuestros credenciales debemos iniciar sesión en AWS, y en el a
 # 4 Generar un Par de Claves SSH:
 El archivo mykey.pub se refiere a la clave pública que corresponde a la clave privada que utilizarás para acceder a las instancias EC2. La clave pública es necesaria para establecer la autenticación segura a través de SSH en las instancias que se creen. 
 
-- Podemos generar una usando el siguiente comando en la terminal (asegúrate de estar en un lugar seguro, ya que la clave privada debe mantenerse segura):
-ssh-keygen -t rsa -b 4096 -C "email@example.com"
+Podemos generar una usando el siguiente comando en la terminal (asegúrate de estar en un lugar seguro, ya que la clave privada debe mantenerse segura):
+- ssh-keygen -t rsa -b 4096 -C "email@example.com"
 Esto generará una clave pública y una clave privada en tu directorio local que hace por defecto ~/.ssh/. El archivo id_rsa.pub es significa la clave pública.
 
-Una vez que tienes la clave pública generada, puedes utilizarla en tu archivo de configuración de Terraform. En el código para lanzar la EC2, la línea ´public_key = file("mykey.pub")´ está indicando que Terraform tomará la clave pública del archivo mykey.pub en el mismo directorio donde esta el archivo de configuración de Terraform.
+Una vez que la clave pública esté generada, puedes utilizarla en tu archivo de configuración de Terraform. En el código para lanzar la EC2, la línea ´public_key = file("mykey.pub")´ está indicando que Terraform tomará la clave pública del archivo mykey.pub en el mismo directorio donde esta el archivo de configuración de Terraform.
 
 Para utilizar tu clave pública generada anteriormente, se debe cambiar el path de la línea anterior donde hayamos ubicado nuestra ssh.
 
 # 5. Editar y Ejecutar el código de Terraform
-- Para ejecutar el archivo de terraformInit.tf que está dentro de la carpeta de EC2_Instances, debemos abrir una terminal y colocarnos dentro del archivo .tf para correr la automatización. Algunos de los comandos necesarios para esta ejecución son:
-        - terraform init: Inicializa el directorio de trabajo.
-        - terraform plan: Muestra los recursos que serán creados o los que fueron modificados.
-        - terraform apply: Crea los recursos definidos en tu código.
-Debemos confirmar la creación de recursos escribiendo "yes" cuando se te solicite.
+Para ejecutar el archivo de terraformInit.tf que está dentro de la carpeta de EC2_Instances, debemos abrir una terminal y colocarnos dentro del archivo .tf para correr la automatización. Algunos de los comandos necesarios para esta ejecución son:
+- terraform init: Inicializa el directorio de trabajo.
+- terraform plan: Muestra los recursos que serán creados o los que fueron modificados.
+- terraform apply: Crea los recursos definidos en tu código.
+- terraform destroy: Elimina nuestra instancia.
+Debemos confirmar la creación o destrucción de recursos escribiendo "yes" cuando se solicite en la terminal.
 
 This is a final project for our course "Fundamentos de Sistemas Operativos" at Fidélitas University
