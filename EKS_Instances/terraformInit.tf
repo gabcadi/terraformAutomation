@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 locals {
-  name   = "ascode-cluster"
+  name   = "fundamentos_Proyecto"
   region = "us-east-1"
 
   vpc_cidr = "10.123.0.0/16"
@@ -82,7 +82,7 @@ module "eks" {
       capacity_type  = "SPOT"
 
       tags = {
-        ExtraTag = "helloworld"
+        ExtraTag = "hola mundo"
       }
     }
   }
